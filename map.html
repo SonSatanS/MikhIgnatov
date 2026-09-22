@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта мира · Михаил Игнатов</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/map.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">МИХАИЛ <img class="tree" src="images/tree.png" alt=""> ИГНАТОВ</div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="shop.html">Магазин</a>
+            <a href="heroes.html">Герои книг</a>
+            <a href="map.html">Карта мира</a>
+            <a href="chat.html">Чат с автором</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="map-heading"><span class="eyebrow">Атлас цикла «Путь»</span><h1 class="section-title">Карта мира</h1><div class="divider"><span></span></div></div>
+
+        <div class="map-layout">
+            <div class="map-stage" id="mapStage">
+                <svg id="map" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" role="img"
+                    aria-label="Интерактивная карта мира">
+                    <defs>
+                        <radialGradient id="seaGrad" cx="50%" cy="40%" r="75%">
+                            <stop offset="0%" stop-color="#cfe3dc" />
+                            <stop offset="100%" stop-color="#bcd6cd" />
+                        </radialGradient>
+                        <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#f6ecd6" />
+                            <stop offset="100%" stop-color="#ecdfc1" />
+                        </linearGradient>
+                        <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#2c2519" flood-opacity="0.18" />
+                        </filter>
+                    </defs>
+
+                    <g id="world">
+                        <rect class="sea" x="-400" y="-300" width="2400" height="1600" fill="url(#seaGrad)" />
+
+                        <g id="rings"></g>
+
+                        <g id="biomes"></g>
+                        <g id="markers"></g>
+                    </g>
+
+                    <g id="compass" transform="translate(1460,150)">
+                        <circle r="46" fill="rgba(251,245,230,0.7)" stroke="#b8852b" stroke-width="1.5" />
+                        <path d="M0,-40 L9,0 L0,40 L-9,0 Z" fill="#8a3b2e" />
+                        <path d="M-40,0 L0,9 L40,0 L0,-9 Z" fill="#2f6b5e" />
+                        <text y="-50" text-anchor="middle" class="compass-n">С</text>
+                    </g>
+
+                </svg>
+
+                <div class="map-zoom">
+                    <button id="zoomIn" aria-label="Приблизить">+</button>
+                    <button id="zoomOut" aria-label="Отдалить">−</button>
+                    <button id="zoomReset" aria-label="Сбросить вид">⟳</button>
+                </div>
+
+                <div class="map-legend" id="mapLegend">
+                    <h4>Обозначения</h4>
+                </div>
+
+                <p class="map-hint">Тащите карту мышью · колесо — масштаб · клик по метке — подробнее</p>
+
+            </div>
+
+            <aside class="map-side-panel" id="mapSidePanel">
+                <div class="map-info-empty" id="mapInfoEmpty">
+                    <span class="map-info-empty-icon">◈</span>
+                    <p>Выберите метку на карте, чтобы увидеть краткую информацию о месте.</p>
+                </div>
+                <div class="map-info" id="mapInfo" hidden>
+                    <button class="map-info-close" id="mapInfoClose" aria-label="Закрыть">×</button>
+                    <span class="map-info-type" id="mapInfoType"></span>
+                    <h3 id="mapInfoName"></h3>
+                    <p id="mapInfoDesc"></p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div class="spoiler-modal" id="spoilerModal" hidden>
+        <div class="spoiler-modal-card">
+            <span class="spoiler-modal-icon">⚠</span>
+            <h3>Осторожно, спойлеры!</h3>
+            <p>На карте отмечены места, которые появляются по ходу сюжета серии «Путь» — сами названия локаций могут
+                заранее намекать на события будущих книг. Если вы ещё не прочитали весь цикл, изучайте карту на свой
+                риск.</p>
+            <button id="spoilerConfirm" class="spoiler-modal-btn">Понимаю, показать карту</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-block">
+                <h4>Менеджер</h4>
+                <p>Елена Воронцова</p>
+                <p>Литературный менеджер</p>
+            </div>
+            <div class="footer-block">
+                <h4>Контакты</h4><a href="tel:+74951234567">+7 (495) 123-45-67</a><a href="mailto:manager@books-series.ru">manager@books-series.ru</a>
+                <p>Пн–Пт: 10:00 – 18:00</p>
+            </div>
+            <div class="footer-block">
+                <h4>Издательство</h4>
+                <p>ООО «Фэнтези»</p>
+                <p>г. Москва, ул. Книжная, д. 12</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Все права защищены.</div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/map.js"></script>
+</body>
+
+</html>

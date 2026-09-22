@@ -1,0 +1,208 @@
+main {
+    flex: 1;
+    padding: 56px 20px 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.heroes {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.heroes-intro {
+    text-align: center;
+    color: var(--ink-soft);
+    margin-bottom: 34px;
+}
+
+.heroes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.hero-card {
+    background: var(--parchment-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.hero-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 14px 34px rgba(44, 37, 25, .18);
+}
+
+.hero-card:focus-visible {
+    outline: 2px solid var(--verdigris);
+    outline-offset: 3px;
+}
+
+.hero-avatar {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--parchment-deep) center/cover no-repeat;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 5px var(--parchment), 0 0 0 6px var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--ink-soft);
+    font-family: var(--font-display);
+    font-size: 34px;
+}
+
+.hero-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--verdigris-deep);
+    margin-bottom: 4px;
+}
+
+.hero-role {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.hero-tagline {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Модалка*/
+.hero-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.hero-modal[hidden] {
+    display: none;
+}
+
+.hero-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 37, 25, .45);
+    backdrop-filter: blur(2px);
+}
+
+.hero-modal-card {
+    position: relative;
+    width: min(640px, 100%);
+    background: var(--parchment-card);
+    border: 1px solid var(--gold);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    overflow: hidden;
+    animation: hmIn .35s ease both;
+}
+
+@keyframes hmIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.hm-portrait {
+    background: var(--parchment-deep) center/cover no-repeat;
+    min-height: 240px;
+    display: grid;
+    place-items: center;
+    color: var(--ink-soft);
+    font-family: var(--font-display);
+    font-size: 60px;
+    border-right: 1px solid var(--line);
+}
+
+.hm-body {
+    padding: 28px;
+}
+
+.hm-role {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.hm-body h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--verdigris-deep);
+    margin: 6px 0 14px;
+}
+
+.hm-body p {
+    color: var(--ink);
+    line-height: 1.7;
+}
+
+.hero-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: var(--parchment-deep);
+    color: var(--ink);
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 2;
+    transition: background .2s;
+}
+
+.hero-modal-close:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+@media (max-width: 560px) {
+    .hero-modal-card {
+        grid-template-columns: 1fr;
+    }
+
+    .hm-portrait {
+        min-height: 160px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+    }
+}
+
+@media (max-width: 520px) {
+    main { padding: 40px 12px 60px; }
+    .heroes-grid { grid-template-columns: 1fr; gap: 16px; max-width: 360px; margin: 0 auto; }
+    .hero-card { padding: 20px 16px; }
+    .hero-modal { padding: 10px; }
+    .hero-modal-card { max-height: 94vh; overflow-y: auto; }
+    .hm-body { padding: 22px 18px 24px; }
+    .hm-body h2 { font-size: 25px; overflow-wrap: anywhere; }
+    .hm-body p { font-size: 15px; }
+    .hero-modal-close { width: 40px; height: 40px; }
+}

@@ -1,0 +1,474 @@
+main {
+    flex: 1;
+    padding: 48px 20px 70px;
+    position: relative;
+    z-index: 1;
+}
+
+.map-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.map-stage {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    border: 3px solid var(--gold);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: #bcd6cd;
+}
+
+.map-stage::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+#map {
+    display: block;
+    width: 100%;
+    height: clamp(420px, 68vh, 760px);
+    cursor: grab;
+    touch-action: none;
+}
+
+#map.grabbing {
+    cursor: grabbing;
+}
+
+#world {
+    transition: transform 0s;
+}
+
+#world.smooth {
+    transition: transform .35s ease;
+}
+
+.river {
+    opacity: .7;
+}
+
+.compass-n {
+    font-family: var(--font-display);
+    font-size: 20px;
+    fill: var(--ink);
+}
+
+.ring-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    fill: var(--ink-soft);
+    font-style: italic;
+    letter-spacing: .5px;
+    paint-order: stroke;
+    stroke: rgba(251, 245, 230, .9);
+    stroke-width: 4px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.place .hit {
+    fill: transparent;
+    stroke: none;
+}
+
+.place .pin-label {
+    font-family: var(--font-body);
+    font-size: 15px;
+    fill: var(--ink);
+    paint-order: stroke;
+    stroke: var(--parchment-card);
+    stroke-width: 4px;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
+}
+
+.place:hover .pin-label,
+.place.active .pin-label {
+    opacity: 1;
+}
+
+.place .pin-body {
+    transition: transform .15s;
+    transform-origin: center bottom;
+}
+
+.place:hover .pin-body {
+    transform: translateY(-3px);
+}
+
+.place.dimmed {
+    display: none;
+}
+
+.map-zoom {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 4;
+}
+
+.map-zoom button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line);
+    background: var(--parchment-card);
+    color: var(--verdigris-deep);
+    font-size: 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition: background .2s, transform .1s;
+}
+
+.map-zoom button:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+.map-zoom button:active {
+    transform: scale(.94);
+}
+
+.map-zoom button:focus-visible {
+    outline: 2px solid var(--verdigris);
+    outline-offset: 2px;
+}
+
+.map-legend {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    background: rgba(251, 245, 230, 0.92);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(2px);
+    z-index: 4;
+    max-width: 200px;
+}
+
+.map-legend h4 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--verdigris-deep);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    padding: 5px 6px;
+    border: none;
+    background: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink);
+    transition: background .2s, opacity .2s;
+}
+
+.legend-item:hover {
+    background: rgba(47, 107, 94, .08);
+}
+
+.legend-item.off {
+    opacity: .4;
+    text-decoration: line-through;
+}
+
+.legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex: none;
+    border: 1.5px solid rgba(0, 0, 0, .15);
+}
+
+.map-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    background: rgba(251, 245, 230, .85);
+    padding: 5px 14px;
+    border-radius: 20px;
+    z-index: 3;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.map-side-panel {
+    flex: none;
+    width: 300px;
+    min-height: 320px;
+    background: var(--parchment-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-info-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 30px 24px;
+    color: var(--ink-soft);
+}
+
+.map-info-empty-icon {
+    font-size: 26px;
+    color: var(--gold);
+}
+
+.map-info-empty p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.map-info-empty[hidden] {
+    display: none;
+}
+
+.map-info {
+    position: relative;
+    width: 100%;
+    padding: 22px 20px 20px;
+    animation: infoIn .25s ease both;
+}
+
+.map-info[hidden] {
+    display: none;
+}
+
+@keyframes infoIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.map-info-type {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    background: var(--verdigris);
+}
+
+.map-info h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--verdigris-deep);
+    margin-bottom: 10px;
+}
+
+.map-info p {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.65;
+}
+
+.map-info-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: var(--parchment-deep);
+    color: var(--ink);
+    font-size: 20px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.map-info-close:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+main.blurred {
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.spoiler-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 37, 25, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.spoiler-modal[hidden] {
+    display: none;
+}
+
+.spoiler-modal-card {
+    background: var(--parchment-card);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    max-width: 440px;
+    width: 100%;
+    padding: 34px 30px 28px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    animation: infoIn .3s ease both;
+}
+
+.spoiler-modal-icon {
+    display: inline-block;
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.spoiler-modal-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--verdigris-deep);
+    margin-bottom: 12px;
+}
+
+.spoiler-modal-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 24px;
+}
+
+.spoiler-modal-btn {
+    background: var(--verdigris);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+}
+
+.spoiler-modal-btn:hover {
+    background: var(--verdigris-deep);
+}
+
+.spoiler-modal-btn:active {
+    transform: scale(.97);
+}
+
+@media (max-width: 640px) {
+    main {
+        padding: 36px 12px 50px;
+    }
+
+    .map-legend {
+        padding: 9px 10px;
+        max-width: 150px;
+    }
+
+    .map-legend h4 {
+        font-size: 12px;
+    }
+
+    .legend-item {
+        font-size: 12px;
+    }
+
+    .map-hint {
+        font-size: 11px;
+        bottom: 8px;
+    }
+
+    .map-layout {
+        flex-direction: column;
+    }
+
+    .map-side-panel {
+        width: 100%;
+        min-height: 0;
+    }
+
+    .spoiler-modal-card {
+        padding: 26px 20px 22px;
+    }
+}
+
+.map-heading{max-width:1140px;margin:0 auto;text-align:center;}
+.map-heading .eyebrow{display:block;text-align:center;}
+
+/* Интерактивные метки карты */
+.place,
+.place .hit,
+.place .pin-body,
+.place .pin-label {
+    cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+    .map-layout { gap: 14px; }
+    .map-side-panel { width: 100%; }
+}
+
+@media (max-width: 640px) {
+    #map { height: min(68vh, 560px); min-height: 390px; }
+    .map-stage { border-width: 2px; }
+    .map-legend { left: 8px; top: 8px; max-width: 145px; }
+    .map-zoom { right: 8px; bottom: 8px; }
+    .map-zoom button { width: 44px; height: 44px; }
+    .map-hint {
+        left: 8px;
+        right: 8px;
+        transform: none;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.3;
+        padding: 5px 8px;
+    }
+    .map-info { padding: 22px 16px 18px; }
+    .map-info h3 { font-size: 20px; overflow-wrap: anywhere; }
+}

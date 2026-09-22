@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Михаил Игнатов</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">МИХАИЛ <img class="tree" src="images/tree.png" alt=""> ИГНАТОВ</div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="shop.html">Магазин</a>
+            <a href="heroes.html">Герои книг</a>
+            <a href="map.html">Карта мира</a>
+            <a href="chat.html">Чат с автором</a>
+        </nav>
+    </header>
+
+    <!-- Назначение сайта -->
+    <section class="site-purpose" aria-label="О сайте">
+        <span class="eyebrow">О сайте</span>
+        <p>Этот сайт создан как учебный информационный проект по циклу «Путь» Михаила Игнатова. Здесь собраны сведения о книгах, героях и мире серии, чтобы читателям было удобнее знакомиться со вселенной, находить нужные книги и постепенно погружаться в историю.</p>
+    </section>
+
+    <!-- Биография -->
+    <section class="author">
+        <div class="author-portrait">
+            <div class="portrait-frame" aria-hidden="true">
+                <span class="portrait-placeholder"><img
+                        src="https://cdn.litres.ru/pub/authors/100/18/42/73/18427391.jpg" style="width: 217px;"></span>
+            </div>
+        </div>
+        <div class="author-bio">
+            <span class="eyebrow">Об авторе</span>
+            <h1 class="author-name">Михаил Игнатов</h1>
+            <p class="author-lead">Автор цикла «Путь» — масштабной истории о дороге, выборе, испытаниях и постоянном преодолении себя.</p>
+            <p>На страницах серии читатель проходит вместе с героями через разные земли, пояса и ордена, открывая всё более широкую и опасную часть мира.</p>
+            <p>Этот сайт посвящён книгам цикла и помогает собрать историю «Пути» в одном месте — от первых страниц до новых земель и испытаний.</p>
+            <div class="author-stats">
+                <div class="stat"><b>22</b><span>книги в каталоге</span></div>
+                <div class="stat"><b>7</b><span>земель и поясов</span></div>
+                <div class="stat"><b>1</b><span>большая история</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Книжный слайдер -->
+    <section class="slider-section">
+        <span class="eyebrow">Цикл «Путь»</span>
+        <h2 class="section-title">Книги автора</h2>
+        <div class="divider"><span></span></div>
+
+        <div class="slider-viewport" id="sliderViewport">
+            <div class="slider-track" id="sliderTrack"></div>
+        </div>
+        <p class="slider-hint">Тащите мышью, чтобы промотать</p>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews-section">
+        <h2 class="section-title">Отзывы</h2>
+        <div class="divider"><span></span></div>
+
+        <!-- Пусто - форма по центру -->
+        <div class="reviews-layout is-empty" id="reviewsLayout">
+            <div class="reviews-list" id="reviewsList" aria-live="polite"></div>
+
+            <div class="review-form-wrap">
+                <form id="reviewForm" class="review-form">
+                    <h3>Оставить отзыв</h3>
+                    <div class="form-group">
+                        <label for="r-name">Имя</label>
+                        <input type="text" id="r-name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="r-email">Электронная почта</label>
+                        <input type="email" id="r-email" placeholder="Ваш e-mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="r-message">Отзыв</label>
+                        <textarea id="r-message" placeholder="Ваши впечатления о книге…" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-block">
+                <h4>Менеджер</h4>
+                <p>Елена Воронцова</p>
+                <p>Литературный менеджер</p>
+            </div>
+            <div class="footer-block">
+                <h4>Контакты</h4>
+                <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                <a href="mailto:manager@books-series.ru">manager@books-series.ru</a>
+                <p>Пн–Пт: 10:00 – 18:00</p>
+            </div>
+            <div class="footer-block">
+                <h4>Издательство</h4>
+                <p>ООО «Фэнтези»</p>
+                <p>г. Москва, ул. Книжная, д. 12</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Все права защищены.</div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
