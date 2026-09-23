@@ -30,7 +30,14 @@ main {
     text-align: center;
     cursor: pointer;
     box-shadow: var(--shadow-card);
-    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .35s ease, transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.hero-card.in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero-card:hover {
@@ -45,8 +52,8 @@ main {
 }
 
 .hero-avatar {
-    width: 110px;
-    height: 110px;
+    width: 170px;
+    height: 170px;
     margin: 0 auto 16px;
     border-radius: 50%;
     background: var(--parchment-deep) center/cover no-repeat;
@@ -86,10 +93,10 @@ main {
 .hero-modal {
     position: fixed;
     inset: 0;
-    z-index: 50;
+    z-index: 1000;
     display: grid;
     place-items: center;
-    padding: 20px;
+    padding: 24px;
 }
 
 .hero-modal[hidden] {
@@ -99,21 +106,26 @@ main {
 .hero-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(44, 37, 25, .45);
-    backdrop-filter: blur(2px);
+    background: rgba(27, 23, 17, .68);
+    backdrop-filter: blur(5px);
+    animation: modalFade .2s ease;
 }
 
 .hero-modal-card {
     position: relative;
-    width: min(640px, 100%);
-    background: var(--parchment-card);
-    border: 1px solid var(--gold);
-    border-radius: 16px;
-    box-shadow: var(--shadow-soft);
+    z-index: 1;
+    width: min(760px, 100%);
+    max-height: min(88vh, 760px);
+    overflow: auto;
     display: grid;
-    grid-template-columns: 200px 1fr;
-    overflow: hidden;
-    animation: hmIn .35s ease both;
+    grid-template-columns: minmax(180px, 250px) 1fr;
+    gap: 28px;
+    padding: 28px;
+    background: linear-gradient(135deg, var(--parchment-card), var(--parchment));
+    border: 1px solid var(--gold);
+    border-radius: 18px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .35);
+    animation: modalPop .28s ease both;
 }
 
 @keyframes hmIn {
@@ -130,7 +142,8 @@ main {
 
 .hm-portrait {
     background: var(--parchment-deep) center/cover no-repeat;
-    min-height: 240px;
+    min-height: 500px;
+    height: 100%;
     display: grid;
     place-items: center;
     color: var(--ink-soft);
@@ -140,69 +153,169 @@ main {
 }
 
 .hm-body {
-    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hm-role {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    text-transform: uppercase;
 }
 
 .hm-body h2 {
+    margin: 8px 0 14px;
     font-family: var(--font-display);
-    font-size: 28px;
     color: var(--verdigris-deep);
-    margin: 6px 0 14px;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.1;
 }
 
 .hm-body p {
-    color: var(--ink);
-    line-height: 1.7;
+    color: var(--ink-soft);
+    line-height: 1.65;
 }
 
 .hero-modal-close {
     position: absolute;
     top: 10px;
     right: 12px;
-    width: 34px;
-    height: 34px;
-    border: none;
+    width: 38px;
+    height: 38px;
+    border: 0;
     border-radius: 50%;
-    background: var(--parchment-deep);
-    color: var(--ink);
-    font-size: 22px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 28px;
     cursor: pointer;
     z-index: 2;
-    transition: background .2s;
+    transition: transform .2s ease, background .2s ease;
 }
 
 .hero-modal-close:hover {
-    background: var(--gold);
-    color: #fff;
+    transform: rotate(90deg);
+    background: rgba(184, 154, 90, .14);
 }
 
 @media (max-width: 560px) {
     .hero-modal-card {
         grid-template-columns: 1fr;
+        min-height: 0;
     }
 
     .hm-portrait {
-        min-height: 160px;
+        min-height: 260px;
+        height: 260px;
         border-right: none;
         border-bottom: 1px solid var(--line);
     }
 }
 
+@media (max-width: 640px) {
+    .hero-modal {
+        padding: 14px;
+    }
+
+    .hero-modal-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 22px;
+    }
+
+    .hm-portrait {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 520px) {
-    main { padding: 40px 12px 60px; }
-    .heroes-grid { grid-template-columns: 1fr; gap: 16px; max-width: 360px; margin: 0 auto; }
-    .hero-card { padding: 20px 16px; }
-    .hero-modal { padding: 10px; }
-    .hero-modal-card { max-height: 94vh; overflow-y: auto; }
-    .hm-body { padding: 22px 18px 24px; }
-    .hm-body h2 { font-size: 25px; overflow-wrap: anywhere; }
-    .hm-body p { font-size: 15px; }
-    .hero-modal-close { width: 40px; height: 40px; }
+    main {
+        padding: 40px 12px 60px;
+    }
+
+    .heroes-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .hero-card {
+        padding: 20px 16px;
+    }
+
+    .hero-modal {
+        padding: 10px;
+    }
+
+    .hero-modal-card {
+        max-height: 94vh;
+        padding: 18px;
+        gap: 14px;
+        border-radius: 14px;
+    }
+
+    .hm-portrait {
+        max-width: 170px;
+    }
+
+    .hm-body h2 {
+        font-size: clamp(24px, 8vw, 32px);
+        overflow-wrap: anywhere;
+    }
+
+    .hm-body p {
+        font-size: 14px;
+    }
+
+    .hero-modal-close {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.hero-avatar,
+.hm-portrait {
+    overflow: hidden;
+    position: relative;
+}
+
+.hm-portrait {
+    border-radius: 10px;
+}
+
+.hero-avatar img,
+.hm-portrait img {
+    width: 140%;
+    height: 120%;
+    display: block;
+    object-fit: cover;
+}
+
+.portrait-fallback-letter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--ink-soft);
+    font-family: var(--font-display);
+    font-size: 60px;
+    line-height: 1;
+}
+
+.hero-avatar .portrait-fallback-letter {
+    font-size: 34px;
+}
+
+.hero-avatar.portrait-fallback,
+.hm-portrait.portrait-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

@@ -167,3 +167,23 @@ main {
     .shop-cover { max-width: 270px; width: 100%; margin-left: auto; margin-right: auto; }
     .shop-card h3 { font-size: 17px; overflow-wrap: anywhere; }
 }
+
+
+.shop-card {
+    cursor: pointer;
+}
+
+.shop-details {
+    display: block;
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--verdigris);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .25s ease, opacity .25s ease;
+}
+
+.shop-card:hover .shop-details {
+    color: var(--gold);
+}

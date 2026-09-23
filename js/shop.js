@@ -1,5 +1,15 @@
 const makeCover = (title, subtitle) => {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900"><rect width="600" height="900" fill="#2f6b5e"/><rect x="28" y="28" width="544" height="844" rx="18" fill="none" stroke="#b89a5a" stroke-width="5"/><text x="300" y="330" text-anchor="middle" fill="#f6ecd6" font-size="34" font-family="Georgia,serif">ПУТЬ</text><text x="300" y="410" text-anchor="middle" fill="#f6ecd6" font-size="30" font-family="Georgia,serif">${title}</text><text x="300" y="470" text-anchor="middle" fill="#d8c28d" font-size="24" font-family="Georgia,serif">${subtitle}</text><text x="300" y="780" text-anchor="middle" fill="#f6ecd6" font-size="22" font-family="Georgia,serif">МИХАИЛ ИГНАТОВ</text></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" 
+  width="600" 
+  height="900" 
+  viewBox="0 0 600 900">
+  <rect width="600" height="900" fill="#2f6b5e"/>
+  <rect x="28" y="28" width="544" height="844" rx="18" fill="none" stroke="#b89a5a" stroke-width="5"/>
+  <text x="300" y="330" text-anchor="middle" fill="#f6ecd6" font-size="34" font-family="Georgia,serif">ПУТЬ</text>
+  <text x="300" y="410" text-anchor="middle" fill="#f6ecd6" font-size="30" font-family="Georgia,serif">${title}</text>
+  <text x="300" y="470" text-anchor="middle" fill="#d8c28d" font-size="24" font-family="Georgia,serif">${subtitle}</text>
+  <text x="300" y="780" text-anchor="middle" fill="#f6ecd6" font-size="22" font-family="Georgia,serif">МИХАИЛ ИГНАТОВ</text>
+  </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 };
 

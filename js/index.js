@@ -38,7 +38,12 @@ const books = [
         card.innerHTML =
             `<div class="book-cover" style="background-image:url('${b.cover}')"></div>
              <div class="book-info"><span class="vol">${b.vol}</span><h3>${b.name}</h3></div>`;
-        const open = () => { if (!moved && window.openBookModal) window.openBookModal(b); };
+        const open = () => {
+            // Если перед кликом была протяжка слайдера, не открываем книгу.
+            // Сбрасываем флаг сразу, чтобы следующий обычный клик работал.
+            if (moved) { moved = false; return; }
+            if (window.openBookModal) window.openBookModal(b);
+        };
         card.addEventListener('click', open);
         card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
         track.appendChild(card);

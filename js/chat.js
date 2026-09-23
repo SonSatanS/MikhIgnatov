@@ -28,7 +28,7 @@ function showTyping() {
     return el;
 }
 
-addMessage('Здравствуйте! Рад, что вы читаете мои книги. Спрашивайте — отвечу, когда буду за компьютером.', 'author');
+addMessage('Здравствуйте! Рад, что вы читаете мои книги. Спрашивайте - отвечу, когда буду за компьютером.', 'author');
 
 const replies = [
     'Спасибо за сообщение!',
@@ -64,3 +64,4 @@ input.addEventListener('input', () => {
 input.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
 });
+S
