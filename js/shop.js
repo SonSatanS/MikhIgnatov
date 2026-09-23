@@ -36,19 +36,9 @@ bookList.forEach(b => {
   card.innerHTML = `
         <div class="shop-cover" style="background-image:url('${b.cover}')"></div>
         <span class="shop-vol">${b.vol}</span>
-        <h3>${b.title}</h3>
-        <p class="shop-desc">${b.desc}</p>
-        <div class="shop-foot">
-            <a class="ozon-btn" href="${b.ozon}" target="_blank" rel="noopener"
-               aria-label="Купить «${b.title}» на OZON">
-                <span class="ozon-mark">O</span>
-                <span class="cart">🛒</span>
-                Купить на OZON
-            </a>
-        </div>`;
+        <h3>${b.title}</h3>`;
 
-  card.addEventListener('click', event => {
-    if (event.target.closest('.ozon-btn')) return;
+  card.addEventListener('click', () => {
     if (window.openBookModal) window.openBookModal(b);
   });
   grid.appendChild(card);

@@ -51,12 +51,10 @@ const books = [
     let velocity = 0;
     let lastX = 0;
     let lastTime = 0;
-    let wheelVelocity = 0;
     let lastFrame = performance.now();
     const AUTO_SPEED = 0.35;
     const AUTO_DELAY = 2500;
     const FRICTION = 0.92;
-    const WHEEL_FORCE = 0.75;
 
     function measure() {
         single = track.scrollWidth / 3;
@@ -78,7 +76,6 @@ const books = [
         startX = e.clientX; startPos = pos;
         lastX = e.clientX; lastTime = performance.now();
         velocity = 0;
-        wheelVelocity = 0;
         lastInteraction = Date.now();
         viewport.classList.add('dragging');
         viewport.setPointerCapture(e.pointerId);
@@ -106,16 +103,6 @@ const books = [
     viewport.addEventListener('pointercancel', endDrag);
     viewport.addEventListener('pointerleave', endDrag);
 
-    viewport.addEventListener('wheel', e => {
-        if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-        e.preventDefault();
-        const delta = Math.max(-80, Math.min(80, e.deltaY));
-        wheelVelocity += -delta * WHEEL_FORCE;
-        wheelVelocity = Math.max(-35, Math.min(35, wheelVelocity));
-        lastInteraction = Date.now();
-        moved = false;
-    }, { passive: false });
-
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     (function loop(now = performance.now()) {
         const dt = Math.min(32, now - lastFrame) / 16.67;
@@ -123,11 +110,7 @@ const books = [
         const idle = Date.now() - lastInteraction > AUTO_DELAY;
 
         if (!dragging) {
-            if (Math.abs(wheelVelocity) > 0.05) {
-                pos += wheelVelocity * dt;
-                wheelVelocity *= Math.pow(FRICTION, dt);
-                wrap(); apply();
-            } else if (Math.abs(velocity) > 0.05) {
+            if (Math.abs(velocity) > 0.05) {
                 pos += velocity * dt;
                 velocity *= Math.pow(FRICTION, dt);
                 wrap(); apply();
