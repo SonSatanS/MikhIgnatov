@@ -334,7 +334,7 @@
 
 .review-form-wrap {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     width: 100%;
 }
 
