@@ -1,29 +1,27 @@
-
 const books = [
-    { name: "Пустошь. Нулевой круг", vol: "Книга 1", cover: "https://cm.author.today/content/2021/12/14/103afbbc14eb47f2ba729c116372033b.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Пустошь+Нулевой+круг+Михаил+Игнатов" },
-    { name: "Школа. Первый пояс", vol: "Книга 2", cover: "https://cm.author.today/content/2020/01/04/142c5d2c4d984cc28d9f53986814dc7b.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Школа+Первый+пояс+Михаил+Игнатов" },
-    { name: "Морозная гряда. Первый пояс", vol: "Книга 3", cover: "https://cm.author.today/content/2020/01/04/d60ef078b40243a1983853beadc8f420.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Морозная+гряда+Михаил+Игнатов" },
-    { name: "Путь силы. Первый пояс", vol: "Книга 4", cover: "https://cm.author.today/content/793914834aa749b1abd194ad80211e3f.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Путь+силы+Михаил+Игнатов" },
-    { name: "Исход. Первый пояс", vol: "Книга 5", cover: "https://cm.author.today/content/2020/09/20/339433f8003744f2a8c0a0b37577e935.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Исход+Первый+пояс+Михаил+Игнатов" },
-    { name: "Лекарь. Второй пояс", vol: "Книга 6", cover: "https://cm.author.today/content/2021/02/17/a9c565c447274fb0b6cded60a5ed6644.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Лекарь+Второй+пояс+Михаил+Игнатов" },
-    { name: "Искатель. Второй пояс", vol: "Книга 7", cover: "https://cm.author.today/content/2021/05/15/038ee450f5a54c27b387e7c206e55196.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Искатель+Второй+пояс+Михаил+Игнатов" },
-    { name: "Беглец. Второй пояс", vol: "Книга 8", cover: "https://cm.author.today/content/2022/01/27/1462f404d5cf4ba995106a0b0cbcf6b7.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Беглец+Второй+пояс+Михаил+Игнатов" },
-    { name: "Ученик. Второй пояс", vol: "Книга 9", cover: "https://cm.author.today/content/2022/01/17/5cf3b324fb4f4757b8ef717924454dfe.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Ученик+Второй+пояс+Михаил+Игнатов" },
-    { name: "Защитник. Второй пояс", vol: "Книга 10", cover: "https://cm.author.today/content/2022/05/13/305db70d7ecd4e88993a495539d72081.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Защитник+Второй+пояс+Михаил+Игнатов" },
-    { name: "Имперец. Земли Итреи", vol: "Книга 11", cover: "https://cm.author.today/content/2022/12/05/5b4ab6703812415396679253d8298256.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Имперец+Земли+Итреи+Михаил+Игнатов" },
-    { name: "Чемпион. Второй пояс", vol: "Книга 12", cover: "https://cm.author.today/content/2023/06/15/a4e25201a2084a659e21b84452e625f8.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Чемпион+Второй+пояс+Михаил+Игнатов" },
-    { name: "Разочарование. Пятый пояс", vol: "Книга 13", cover: "https://cm.author.today/content/2023/10/17/bb1d6c11299047ce9a4b839d781ba1fa.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Разочарование+Пятый+пояс+Михаил+Игнатов" },
-    { name: "Осознание. Пятый пояс", vol: "Книга 14", cover: "https://cm.author.today/content/2023/10/17/fa1e09cbac064b0d91b7dcb51baad7d1.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Осознание+Пятый+пояс+Михаил+Игнатов" },
-    { name: "Пробуждение. Пятый пояс", vol: "Книга 15", cover: "https://cm.author.today/content/2024/01/22/2a85c04b3d0f447fb700db7477cc1557.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Пробуждение+Пятый+пояс+Михаил+Игнатов" },
-    { name: "Основание. Пятый пояс", vol: "Книга 16", cover: "https://cm.author.today/content/2024/06/07/59316bc1947946a794730d482a7866f0.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Основание+Пятый+пояс+Михаил+Игнатов" },
-    { name: "Возвышение. Земли Ордена", vol: "Книга 17", cover: "https://cm.author.today/content/2024/10/17/da3d2119681d4653b716bf3598b6f234.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Возвышение+Земли+Ордена+Михаил+Игнатов" },
-    { name: "Испытания. Земли Ордена", vol: "Книга 18", cover: "https://cm.author.today/content/2025/02/11/e951a737c92b4b7aae9ab22c98c8225f.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Испытания+Земли+Ордена+Михаил+Игнатов" },
-    { name: "Перековка. Перевернутое Небо", vol: "Книга 19", cover: "https://cm.author.today/content/2025/07/08/01480490f1844d5eb9272577a86f34e4.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Перековка+Перевернутое+Небо+Михаил+Игнатов" },
-    { name: "Перековка. Малый орден", vol: "Книга 20", cover: "https://cm.author.today/content/2025/11/20/3238800e098543aebdeeebf842c28895.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Перековка+Малый+орден+Михаил+Игнатов" },
-    { name: "Освобождение. Потерянный Орден", vol: "Книга 21", cover: "https://cm.author.today/content/2026/03/24/b1dd34f534184f5f849a7ced4d78f200.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Освобождение+Потерянный+Орден+Михаил+Игнатов" },
-    { name: "Путь Гнева. Земли Империи", vol: "Книга 22", cover: "https://cm.author.today/content/2026/08/03/54003d8f18a8490189f4efbe11f39eb3.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Путь+Гнева+Земли+Империи+Михаил+Игнатов" }
+    { name: "Пустошь. Нулевой круг", vol: "Книга 1", cover: "https://cm.author.today/content/2021/12/14/103afbbc14eb47f2ba729c116372033b.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Пустошь+Нулевой+круг+Михаил+Игнатов", desc: "Мир Древних пал в яростном огне, а на месте великих городов — лишь исчезающие под песком руины. Но даже здесь есть место жизни и надежде. Вот только упавшие сюда ценят лишь силу." },
+    { name: "Школа. Первый пояс", vol: "Книга 2", cover: "https://cm.author.today/content/2020/01/04/142c5d2c4d984cc28d9f53986814dc7b.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Школа+Первый+пояс+Михаил+Игнатов", desc: "Старые стены, видевшие тысячи таких, как ты, учеников. Место, где тебя должны учить, но ценят только победы в схватках и успехи в возвышении." },
+    { name: "Морозная гряда. Первый пояс", vol: "Книга 3", cover: "https://cm.author.today/content/2020/01/04/d60ef078b40243a1983853beadc8f420.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Морозная+гряда+Михаил+Игнатов", desc: "Леса, что таят под своей сенью тысячи свирепых зверей. Место, где тебя ждут приключения, сражения и опасные тайны." },
+    { name: "Путь силы. Первый пояс", vol: "Книга 4", cover: "https://cm.author.today/content/793914834aa749b1abd194ad80211e3f.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Путь+силы+Михаил+Игнатов", desc: "Путь, на который ты ступил ради других. Город, где тебе сулят их спасение. Испытание, что больше походит на глупость. И решимость идти до конца." },
+    { name: "Исход. Первый пояс", vol: "Книга 5", cover: "https://cm.author.today/content/2020/09/20/339433f8003744f2a8c0a0b37577e935.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Исход+Первый+пояс+Михаил+Игнатов", desc: "На землях предков, куда ты когда-то так рвался, ещё никогда твой путь не шёл так, как задумывалось." },
+    { name: "Лекарь. Второй пояс", vol: "Книга 6", cover: "https://cm.author.today/content/2021/02/17/a9c565c447274fb0b6cded60a5ed6644.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Лекарь+Второй+пояс+Михаил+Игнатов", desc: "Сила и талант заставляют тебя искать свой путь, а не идти по проторённому. Ты надеешься перехитрить всех и пройти там, где другие пропали без следа." },
+    { name: "Искатель. Второй пояс", vol: "Книга 7", cover: "https://cm.author.today/content/2021/05/15/038ee450f5a54c27b387e7c206e55196.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Искатель+Второй+пояс+Михаил+Игнатов", desc: "Клятвы о смерти врагов, которые ты когда-то давал… Ложные. Ты уже дважды прощал своих врагов. И то, что один из них носит на себе твой Указ «Смерть» ничего толком не меняет. Но у тебя не было другого выхода. Твоей силы и удачи хватило, чтобы выжить, но впереди лишь новые испытания." },
+    { name: "Беглец. Второй пояс", vol: "Книга 8", cover: "https://cm.author.today/content/2022/01/27/1462f404d5cf4ba995106a0b0cbcf6b7.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Беглец+Второй+пояс+Михаил+Игнатов", desc: "Подземелья Тёмного Предводителя позади. И сотни мертвых тел в его залах. Но впереди лишь новые враги. И когда хочется решить все одним Указом Смерть, приходится одёргивать себя. Ведь ты слишком многим обязан тем, кто носит имя Тамим." },
+    { name: "Ученик. Второй пояс", vol: "Книга 9", cover: "https://cm.author.today/content/2022/01/17/5cf3b324fb4f4757b8ef717924454dfe.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Ученик+Второй+пояс+Михаил+Игнатов", desc: "В землях далекого Ордена Небесного Меча герой пытается достичь своих целей и проверяет на прочность свой и чужой путь к Небу. Погоня, неприятности, лишения позади. Впереди Орден, который Страж приказал сделать сильней, чтобы это ни значило." },
+    { name: "Защитник. Второй пояс", vol: "Книга 10", cover: "https://cm.author.today/content/2022/05/13/305db70d7ecd4e88993a495539d72081.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Защитник+Второй+пояс+Михаил+Игнатов", desc: "У подножия горы Меча герой пытается выжить и проверяет на прочность свой и чужой путь к Небу. Открылся главе Академии, рассказал ему зачем и кем был сюда отправлен? Молодец. Сделать Орден Небесного Меча сильней? Отлично, только для начала нужно не позволить его уничтожить." },
+    { name: "Имперец. Земли Итреи", vol: "Книга 11", cover: "https://cm.author.today/content/2022/12/05/5b4ab6703812415396679253d8298256.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Имперец+Земли+Итреи+Михаил+Игнатов", desc: "В землях сектантов герой пытается выжить и проверяет на прочность начертанный ему духом Изардом путь к Небу. А может быть, прокладывает свой. Если, конечно, забыть о Небе, которое смотрит на всех." },
+    { name: "Чемпион. Второй пояс", vol: "Книга 12", cover: "https://cm.author.today/content/2023/06/15/a4e25201a2084a659e21b84452e625f8.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Чемпион+Второй+пояс+Михаил+Игнатов", desc: "Снова Второй пояс. У героя здесь есть немало долгов, а он не любит, чтобы они повисали на нем грузом. Он идет навстречу Небу свободный от всех обязательств. А еще Второй пояс полон врагов, которые тоже не прочь взыскать долги." },
+    { name: "Разочарование. Пятый пояс", vol: "Книга 13", cover: "https://cm.author.today/content/2023/10/17/bb1d6c11299047ce9a4b839d781ba1fa.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Разочарование+Пятый+пояс+Михаил+Игнатов", desc: "Ты добился своего: Орден Небесного Меча победил на турнире клан Дизир, невзирая на все его уловки, объединённые силы и сговор со старейшинами Гарой. Ты сделал даже больше – всучил Дизир отравленный приз – город Тысячи Этажей. Но…" },
+    { name: "Осознание. Пятый пояс", vol: "Книга 14", cover: "https://cm.author.today/content/2023/10/17/fa1e09cbac064b0d91b7dcb51baad7d1.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Осознание+Пятый+пояс+Михаил+Игнатов", desc: "Разочарование Поднебесной Империей позади. Ты уже пережил его и начал понимать, что она из себя представляет. Битва с предателями и големами Древних тоже позади, казалось бы, можно оставить в прошлом этот проклятый город Ян и с чистой совестью жить так, как хочется, тем более, что и учитель, кажется нашёлся." },
+    { name: "Пробуждение. Пятый пояс", vol: "Книга 15", cover: "https://cm.author.today/content/2024/01/22/2a85c04b3d0f447fb700db7477cc1557.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Пробуждение+Пятый+пояс+Михаил+Игнатов", desc: "Месяцы, прожитые в Пятом, события, в которых участвовал герой, испытание Зала Стражей -- ничего из этого не прошло для героя без последствий. Он многое понял, многое осознал, многое решил для себя. Путь, который он выбрал, не будет легким и простым. И путь этот начнется отсюда. Пока у героя есть только Седой, но так будет не всегда. Главное, пока самому Седому об этом не говорить." },
+    { name: "Основание. Пятый пояс", vol: "Книга 16", cover: "https://cm.author.today/content/2024/06/07/59316bc1947946a794730d482a7866f0.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Основание+Пятый+пояс+Михаил+Игнатов", desc: "Регистрация Сломанного Клинка позади, Орден поделен на верных и самых верных. Одни идут за тобой в Каменный Лабиринт, другие же должны уверить врагов, что Орден Небесного Меча распался. Ты ведешь верных за собой, ты пообещал им будущее, ты обещал им цель, ты обещал им перековать Сломанный Клинок и не намерен отказываться от своих слов." },
+    { name: "Возвышение. Земли Ордена", vol: "Книга 17", cover: "https://cm.author.today/content/2024/10/17/da3d2119681d4653b716bf3598b6f234.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Возвышение+Земли+Ордена+Михаил+Игнатов", desc: "Каменный Лабиринт пройден. Ключ в твоих руках. Исток объявлен городом Сломанного Клинка. Платой стали могилы искателей на краю ущелья, рядом с тем местом, что их убило." },
+    { name: "Испытания. Земли Ордена", vol: "Книга 18", cover: "https://cm.author.today/content/2025/02/11/e951a737c92b4b7aae9ab22c98c8225f.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Испытания+Земли+Ордена+Михаил+Игнатов", desc: "Итак, они возвышались, пили, играли на цине и наслаждались полетами, наконец вернулись, а тут... Вдруг как взорвались зажжённые ящики! И так грохнуло, будто бы тысячи громов в одном месте ударили и тысячи молний из одной тучи сверкнули." },
+    { name: "Перековка. Перевернутое Небо", vol: "Книга 19", cover: "https://cm.author.today/content/2025/07/08/01480490f1844d5eb9272577a86f34e4.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Перековка+Перевернутое+Небо+Михаил+Игнатов", desc: "Ты выжил в ловушке, из которой уже сотни лет никто не выбирался. Да, ты выжил, но вот многие из собратьев — нет. И даже смерть безумного духа не сильно смягчает горечь этой потери и твоей вины. Ты, глава Сломанного Клинка, магистр Скрытого Ордена, привёл их в эту ловушку, привёл их на эту смерть." },
+    { name: "Перековка. Малый орден", vol: "Книга 20", cover: "https://cm.author.today/content/2025/11/20/3238800e098543aebdeeebf842c28895.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Перековка+Малый+орден+Михаил+Игнатов", desc: "Раздача старых долгов прошла... странно. Совсем не этого ты ожидал, выбирая своё и только своё. Мелькнула даже мысль: не закончить ли это всё здесь и сейчас? Но переход в город Тысячи Этажей закрыт, а значит, Небо указывает на другой путь." },
+    { name: "Освобождение. Потерянный Орден", vol: "Книга 21", cover: "https://cm.author.today/content/2026/03/24/b1dd34f534184f5f849a7ced4d78f200.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Освобождение+Потерянный+Орден+Михаил+Игнатов", desc: "Следы Потерянного Ордена ведут к тайнам и борьбе за свободу." },
+    { name: "Путь Гнева. Земли Империи", vol: "Книга 22", cover: "https://cm.author.today/content/2026/08/03/54003d8f18a8490189f4efbe11f39eb3.jpg", authorToday: "https://author.today/work/series/5008", ozon: "https://www.ozon.ru/search/?text=Путь+Гнева+Земли+Империи+Михаил+Игнатов", desc: "В Землях Империи путь героя приводит к новой грани силы и гнева." }
 ];
-
 (function buildSlider() {
     const viewport = document.getElementById('sliderViewport');
     const track = document.getElementById('sliderTrack');
@@ -38,14 +36,13 @@ const books = [
         card.innerHTML =
             `<div class="book-cover" style="background-image:url('${b.cover}')"></div>
              <div class="book-info"><span class="vol">${b.vol}</span><h3>${b.name}</h3></div>`;
-        const open = () => {
-            // Если перед кликом была протяжка слайдера, не открываем книгу.
-            // Сбрасываем флаг сразу, чтобы следующий обычный клик работал.
-            if (moved) { moved = false; return; }
-            if (window.openBookModal) window.openBookModal(b);
-        };
-        card.addEventListener('click', open);
-        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+        card._book = b;
+        card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (window.openBookModal) window.openBookModal(b);
+            }
+        });
         track.appendChild(card);
     });
 
@@ -76,12 +73,18 @@ const books = [
     }
     function apply() { track.style.transform = `translate3d(${pos}px, 0, 0)`; }
 
+    let downX = 0, downY = 0, downTime = 0, downTarget = null;
+
     viewport.addEventListener('pointerdown', e => {
         dragging = true; moved = false;
         startX = e.clientX; startPos = pos;
         lastX = e.clientX; lastTime = performance.now();
         velocity = 0;
         lastInteraction = Date.now();
+        downX = e.clientX;
+        downY = e.clientY;
+        downTime = Date.now();
+        downTarget = e.target;
         viewport.classList.add('dragging');
         viewport.setPointerCapture(e.pointerId);
     });
@@ -104,9 +107,25 @@ const books = [
         lastInteraction = Date.now();
         viewport.classList.remove('dragging');
     }
-    viewport.addEventListener('pointerup', endDrag);
-    viewport.addEventListener('pointercancel', endDrag);
-    viewport.addEventListener('pointerleave', endDrag);
+
+    viewport.addEventListener('pointerup', e => {
+        const dist = Math.hypot(e.clientX - downX, e.clientY - downY);
+        const duration = Date.now() - downTime;
+        const isClick = dist < 8 && duration < 500 && !moved;
+        const target = downTarget;
+        endDrag();
+        moved = false;
+
+        if (isClick && target) {
+            const card = target.closest('.book-card');
+            if (card && card._book && window.openBookModal) {
+                window.openBookModal(card._book);
+            }
+        }
+    });
+
+    viewport.addEventListener('pointercancel', () => { endDrag(); moved = false; });
+    viewport.addEventListener('pointerleave', () => { endDrag(); moved = false; });
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     (function loop(now = performance.now()) {
